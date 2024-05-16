@@ -21,7 +21,21 @@ window.onload = function () {
         // prevent the default form submission action
         event.preventDefault();
 
-        // Log  amessage to the console
-        console.log('Submit Button clicked');
+        // Get Product from the form
+        let p = getProduct();
+
+        // Display product
+        console.log(p);
     });
+}
+
+function getProduct() {
+    const productTitleTextBox = <HTMLInputElement>document.querySelector("#productTitle");
+    let title: string = productTitleTextBox.value;
+
+    const productPriceTextBox = <HTMLInputElement>document.querySelector("#productPrice");
+    let price: number = parseFloat(productPriceTextBox.value);
+
+    let p = new Product(title, price);
+    return p;
 }
